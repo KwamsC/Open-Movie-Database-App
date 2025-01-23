@@ -27,6 +27,11 @@ app.use(
 	}),
 );
 
+// Health Check
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 // Routes
 app.use("/api/v1", movieRoutes);
 
