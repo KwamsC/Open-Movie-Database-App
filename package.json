@@ -10,7 +10,9 @@
   "scripts": {
     "start": "node index.ts",
     "dev": "node --watch --env-file .env index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "biome lint --write movieDb-backend-src",
+    "format": "biome format --write movieDb-backend-src",
+    "check": "biome check --write movieDb-backend-src "
   },
   "keywords": [],
   "author": "Kwame Carr",
