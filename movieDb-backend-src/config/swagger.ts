@@ -7,7 +7,13 @@ export const apiDocumentation = {
 		contact: { name: "Kwame Carr" },
 	},
 	servers: [
-		{ url: "http://localhost:8080/api/v1", description: "Local Server" },
+		{
+			url:
+				process.env.NODE_ENV === "production"
+					? process.env.PROD_URL
+					: "http://localhost:8080/api/v1",
+			description: "API Server",
+		},
 	],
 	tags: [{ name: "Movies" }],
 	paths: {
