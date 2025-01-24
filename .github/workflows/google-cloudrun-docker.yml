@@ -32,10 +32,10 @@ name: 'Build and Deploy to Cloud Run'
 on:
   push:
     branches:
-      - '"main"'
+      - main
   pull_request:
     branches: 
-      - '"main"'
+      - main
 
 env:
   PROJECT_ID: open-moviedb-app
