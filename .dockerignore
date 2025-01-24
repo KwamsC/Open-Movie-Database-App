@@ -2,3 +2,4 @@
 .env.example
 .gitignore
 node_modules
+biome.json
