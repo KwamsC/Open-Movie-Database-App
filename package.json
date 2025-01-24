@@ -1,5 +1,5 @@
 {
-  "name": "open-movie-database-app",
+  "name": "open-movie-db-app",
   "version": "1.0.0",
   "description": "A nodejs backend server for movie database",
   "main": "index.ts",
@@ -8,7 +8,7 @@
     "node": "23.6.1"
   },
   "scripts": {
-    "start": "node --env-file .env index.ts",
+    "start": "node index.ts",
     "dev": "node --watch --env-file .env index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
