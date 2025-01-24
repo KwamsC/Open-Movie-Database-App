@@ -65,11 +65,12 @@ jobs:
       - name: Authorize Docker push
         run: gcloud auth configure-docker europe-west4-docker.pkg.dev
 
-      - name: 'Build and Push Container'
+      - name: Build and Push Container
+        working-directory: ./server
         run: |-
-          DOCKER_TAG="$${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
-          docker build --tag "${DOCKER_TAG}" .
-          docker push "${DOCKER_TAG}"
+          docker build -t "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.SERVICE }}:${{ github.sha }}" ./
+          docker push "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.SERVICE }}:${{ github.sha }}"
+
       - name: 'Deploy to Cloud Run'
 
         # END - Docker auth and build
