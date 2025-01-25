@@ -59,10 +59,9 @@ jobs:
         uses: actions/setup-node@v4
         with: 
           node-version: '23.6.1'
-      - run: npm ci
-        working-directory: ./ # Adjust this path to your actual test directory
-      - run: npm test
-        working-directory: ./ # 
+      - run: |
+          npm ci
+          npm test
 
       - name: 'Authenticate to Google Cloud'
         id: 'auth'
