@@ -9,6 +9,7 @@ export const fetchMovie: RequestHandler = async (req, res) => {
 
 		if (movie.Response === "False") {
 			res.status(404).json({ error: "Movie not found" });
+      return
 		}
 
 		res.status(200).json(movie);
@@ -34,6 +35,7 @@ export const searchMovies: RequestHandler = async (req, res) => {
 
 		if (movies.Response === "False") {
 			res.status(404).json({ error: "No movies found" });
+      return
 		}
 
 		res.json(movies);

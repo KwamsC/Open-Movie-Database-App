@@ -9,7 +9,7 @@ import { errorHandler } from "./middlewares/errorHandler.ts";
 const app: Application = express();
 
 // Trust proxy for Cloud Run
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 // Static Files React
 app.use("/", express.static("movieDb-app/dist"));
