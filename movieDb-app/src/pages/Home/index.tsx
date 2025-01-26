@@ -14,7 +14,6 @@ const Home = () => {
 					<div>World</div>
 				</div>
 			</motion.div>
-			<div>Home</div>
 		</div>
 	);
 };

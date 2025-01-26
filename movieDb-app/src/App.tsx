@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router";
+import Navbar from "./common/Navbar";
 import Sidebar from "./common/Sidebar";
 
 const Home = lazy(() => import("./pages/Home"));
@@ -10,6 +11,7 @@ function App() {
 	return (
 		<>
 			<Sidebar />
+			<Navbar />
 			<main className="min-h-screen bg-gradient-to-br from-stone-900 to-stone-700 text-white flex flex-col items-center">
 				<div className="p-4 sm:ml-64">
 					<Suspense fallback={<div>Loading...</div>}>
