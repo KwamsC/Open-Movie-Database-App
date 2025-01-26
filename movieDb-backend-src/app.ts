@@ -5,11 +5,27 @@ import swaggerUi from "swagger-ui-express";
 import movieRoutes from "./api/movies/routes.ts";
 import { apiDocumentation } from "./config/swagger.ts";
 import { errorHandler } from "./middlewares/errorHandler.ts";
+import cors, { type CorsOptions } from "cors";
 
 const app: Application = express();
 
 // Trust proxy for Cloud Run
 app.set('trust proxy', 1);
+
+// CORS
+const allowedOrigins = [
+	"http://localhost:5173",
+	"http://localhost:8080",
+	process.env.PROD_URL,
+];
+const corsOptions: CorsOptions = {
+	origin: allowedOrigins.filter((origin) => origin !== undefined),
+  methods: ['GET', 'POST'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 // Static Files React
 app.use("/", express.static("movieDb-app/dist"));
