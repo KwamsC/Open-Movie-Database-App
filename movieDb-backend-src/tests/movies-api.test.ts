@@ -1,7 +1,7 @@
 import { describe, it, beforeEach, mock } from 'node:test';
 import assert from 'node:assert';
 import request from 'supertest';
-import app from '../movieDb-backend-src/app.ts';
+import app from '../app.ts';
 
 describe('Movie Routes', () => {
   const mockMovie = {
