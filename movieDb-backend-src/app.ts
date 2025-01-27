@@ -1,3 +1,4 @@
+import cors, { type CorsOptions } from "cors";
 import express, { type Application } from "express";
 import { rateLimit } from "express-rate-limit";
 import helmet from "helmet";
@@ -5,12 +6,11 @@ import swaggerUi from "swagger-ui-express";
 import movieRoutes from "./api/movies/routes.ts";
 import { apiDocumentation } from "./config/swagger.ts";
 import { errorHandler } from "./middlewares/errorHandler.ts";
-import cors, { type CorsOptions } from "cors";
 
 const app: Application = express();
 
 // Trust proxy for Cloud Run
-app.set('trust proxy', 1);
+app.set("trust proxy", 1);
 
 // CORS
 const allowedOrigins = [
@@ -20,9 +20,9 @@ const allowedOrigins = [
 ];
 const corsOptions: CorsOptions = {
 	origin: allowedOrigins.filter((origin) => origin !== undefined),
-  methods: ['GET', 'POST'],
-  credentials: true,
-  optionsSuccessStatus: 200
+	methods: ["GET", "POST"],
+	credentials: true,
+	optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
