@@ -1,8 +1,4 @@
-const ENV = import.meta.env.MODE;
-const API_BASE_URL = 
-  ENV === 'production' 
-    ? import.meta.env.VITE_API_PROD_URL 
-    : "http://localhost:8080/api/v1/";
+const API_BASE_URL = '/api/v1';
 
 export const movieService = {
 	async fetchMovie(id: string) {

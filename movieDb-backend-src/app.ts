@@ -73,7 +73,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../movieDb-app/dist/index.html'));
 });
 
-// // Error Handler
+// Error Handler
 app.use(errorHandler);
 
 export default app;
