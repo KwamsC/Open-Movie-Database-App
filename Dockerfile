@@ -18,7 +18,6 @@ WORKDIR /app
 # Install dependencies for backend
 COPY package*.json ./
 COPY movieDb-backend-src ./movieDb-backend-src
-COPY index.ts ./
 RUN npm ci && npm cache clean --force
 
 # Copy built applications

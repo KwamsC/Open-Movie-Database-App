@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 
 const Home = () => {
-  const ENV = import.meta.env.VITE_NODE_ENV;
+  const ENV = import.meta.env.MODE;
 
 	return (
 		<div>

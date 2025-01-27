@@ -7,7 +7,6 @@ const defaultEnv = {
   HOST: '0.0.0.0',
   NODE_ENV: 'development',
   BASE_URL: 'http://www.omdbapi.com/',
-  VITE_NODE_ENV: 'development',
 };
 
 

@@ -1,4 +1,4 @@
-const ENV = import.meta.env.VITE_NODE_ENV;
+const ENV = import.meta.env.MODE;
 const API_BASE_URL = 
   ENV === 'production' 
     ? import.meta.env.VITE_API_PROD_URL 
