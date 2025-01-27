@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node index.ts",
+    "setup:env": "node scripts/setupEnv.ts",
     "dev": "node --watch --env-file .env index.ts",
     "test": "node --test **/*.test.ts",
     "lint": "biome lint --write movieDb-backend-src",
@@ -25,6 +26,8 @@
     "@types/node": "^22.10.7",
     "@types/supertest": "^6.0.2",
     "@types/swagger-ui-express": "^4.1.6",
+    "@inquirer/type": "^3.0.2",
+    "inquirer": "^12.3.2",
     "supertest": "^7.0.0"
   },
   "dependencies": {

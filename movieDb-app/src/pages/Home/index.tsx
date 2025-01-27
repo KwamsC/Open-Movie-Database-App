@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
 
 const Home = () => {
+  const ENV = import.meta.env.VITE_NODE_ENV;
+
 	return (
 		<div>
 			<motion.div
@@ -10,8 +12,7 @@ const Home = () => {
 			>
 				<h1 className="text-4xl font-bold mb-4">Explore Movies</h1>
 				<div className="flex justify-center gap-4">
-					<div>hallo</div>
-					<div>World</div>
+					<div>{ENV}</div>
 				</div>
 			</motion.div>
 		</div>
