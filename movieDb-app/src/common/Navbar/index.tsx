@@ -7,7 +7,7 @@ const Navbar = () => {
 				to="/"
 				className={({ isActive }) =>
 					isActive
-						? "text-white text-l font-bold rounded-4xl bg-white/15 backdrop-blur-md border-b border-white/20 px-6 py-2"
+						? "text-white text-l font-bold rounded-4xl bg-black/60 backdrop-blur-md border-b border-white/20 px-6 py-2"
 						: "text-white text-l font-medium hover:text-blue-400"
 				}
 			>

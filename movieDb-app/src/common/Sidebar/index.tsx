@@ -44,7 +44,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 			<aside className="w-1/4 min-w-[250px] hidden md:block p-4">
 				<h2 className="text-xl h-16 font-bold content-center mb-6">MovieDB</h2>
 				{/* SearchBox */}
-				<div className="space-y-4 bg-stone-500/20 backdrop-blur-2xl p-4  rounded-xl">
+				<div className="space-y-4 bg-black/60 backdrop-blur-2xl p-4 rounded-xl">
 					<h3 className="text-l font-medium">Search</h3>
 					<input
 						type="text"
@@ -80,7 +80,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 				</div>
 
 				{/* Search Results */}
-				<div className="space-y-4 bg-stone-500/20 backdrop-blur-2xl p-4 mt-8 rounded-xl">
+				<div className="space-y-4 bg-black/60 backdrop-blur-2xl p-4 mt-8 rounded-xl">
 					<h3 className="text-lg font-bold mb-2">Search Results</h3>
 					<ul className="space-y-2">
 						{["Movie1", "Movie2", "Movie3", "Movie4", "Movie5"].map((movie) => (
@@ -108,7 +108,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 			<motion.aside
 				initial={{ opacity: 0, x: -250 }}
 				animate={{ x: isOpen ? 0 : -250, opacity: isOpen ? 1 : 0 }}
-				className="fixed top-0 left-0 bottom-0 w-1/4 min-w-[250px] md:hidden p-4 bg-white/10 backdrop-blur-2xl border-r border-white/10 z-20"
+				className="fixed top-0 left-0 bottom-0 w-1/4 min-w-[250px] md:hidden p-4 bg-stone-900/40 backdrop-blur-2xl border-r border-white/10 z-20"
 			>
 				<h2 className="text-xl font-bold m-3 text-right">MovieDB</h2>
 				<div className="py-6">
@@ -149,7 +149,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 				</div>
 
 				{/* Mobile Search Results */}
-				<div className="space-y-4 bg-stone-600/10 backdrop-blur-2xl p-4  rounded-xl">
+				<div className="space-y-4 bg-stone-900/40 backdrop-blur-2xl p-4  rounded-xl">
 					<h3 className="font-bold mb-2">Search Results</h3>
 					<ul className="space-y-2">
 						{["Movie1", "Movie2", "Movie3", "Movie4", "Movie5"].map((movie) => (
