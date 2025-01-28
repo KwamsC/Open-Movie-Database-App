@@ -2,24 +2,14 @@ import { NavLink } from "react-router";
 
 const Navbar = () => {
 	return (
-		<nav className="sm:ml-64 p-4 gap-10 flex fixed">
+		<nav className="top-0 z-5 items-center px-6 h-16 flex md:justify-start justify-center">
 			<NavLink
 				to="/"
 				className={({ isActive }) =>
 					isActive
-						? "text-white text-sm underline font-medium"
-						: "text-white text-sm font-medium hover:text-blue-400"
+						? "text-white text-l font-bold rounded-4xl bg-white/15 backdrop-blur-md border-b border-white/20 px-6 py-2"
+						: "text-white text-l font-medium hover:text-blue-400"
 				}
-			>
-				Home
-			</NavLink>
-			<NavLink
-				className={({ isActive }) =>
-					isActive
-						? "text-white text-sm underline font-medium"
-						: "text-white text-sm font-medium hover:text-blue-400"
-				}
-				to="/movies/tt3896198"
 			>
 				Movies
 			</NavLink>

@@ -3,54 +3,161 @@ import { useState } from "react";
 // import { NavLink } from "react-router";
 // import { movieService } from "../../services/movieService";
 
-const Sidebar = () => {
-	const [isOpen, setIsOpen] = useState(false);
+interface SidebarProps {
+	isOpen: boolean;
+	setIsOpen: (isOpen: boolean) => void;
+}
 
-	const toggleSidebar = () => setIsOpen(!isOpen);
+interface SearchFilters {
+	title: string;
+	year: string;
+	genre: string;
+}
 
+const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
+	const [filters, setFilters] = useState<SearchFilters>({
+		title: "",
+		year: "",
+		genre: "",
+	});
+
+	const handleFilterChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+	) => {
+		setFilters((prev) => ({
+			...prev,
+			[e.target.name]: e.target.value,
+		}));
+	};
+
+	const genres = [
+		"All",
+		"Action",
+		"Comedy",
+		"Drama",
+		"Horror",
+		"Sci-Fi",
+		"Thriller",
+	];
 	return (
 		<>
-			<button
-				type="button"
-				onClick={toggleSidebar}
-				className="fixed top-4 left-4 z-70 p-2 rounded-lg sm:hidden"
-				aria-label="Toggle Sidebar"
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					className="h-6 w-6 text-white"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<title>Toggle bar</title>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						strokeWidth={2}
-						d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+			<aside className="w-1/4 min-w-[250px] hidden md:block p-4">
+				<h2 className="text-xl h-16 font-bold content-center mb-6">MovieDB</h2>
+				{/* SearchBox */}
+				<div className="space-y-4 bg-stone-500/20 backdrop-blur-2xl p-4  rounded-xl">
+					<h3 className="text-l font-medium">Search</h3>
+					<input
+						type="text"
+						name="title"
+						value={filters.title}
+						onChange={handleFilterChange}
+						placeholder="Search movies..."
+						className="w-full px-4 py-2 min-h-[44px] rounded-xl bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
 					/>
-				</svg>
-			</button>
+					<input
+						type="number"
+						name="year"
+						value={filters.year}
+						onChange={handleFilterChange}
+						placeholder="Year"
+						min="1900"
+						max={new Date().getFullYear()}
+						className="w-full px-4 py-2 min-h-[44px] rounded-xl bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					/>
+					<select
+						name="genre"
+						value={filters.genre}
+						onChange={handleFilterChange}
+						className="w-full px-4 py-2 min-h-[44px] rounded-xl bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					>
+						<option value="">Select Genre</option>
+						{genres.map((genre) => (
+							<option key={genre} value={genre}>
+								{genre}
+							</option>
+						))}
+					</select>
+				</div>
 
-			<aside className="hidden fixed top-0 left-0 w-64 h-screen backdrop-blur-md bg-white/10 shadow-md z-50 sm:block">
-				<div className="p-4">
-					<div className="mb-8 text-2xl font-bold text-white sm:text-left text-right">
-						MovieApp
-					</div>
+				{/* Search Results */}
+				<div className="space-y-4 bg-stone-500/20 backdrop-blur-2xl p-4 mt-8 rounded-xl">
+					<h3 className="text-lg font-bold mb-2">Search Results</h3>
+					<ul className="space-y-2">
+						{["Movie1", "Movie2", "Movie3", "Movie4", "Movie5"].map((movie) => (
+							<li key={movie} className="p-2 rounded-lg bg-white/20">
+								{movie}
+							</li>
+						))}
+					</ul>
 				</div>
 			</aside>
 
+			{/* Mobile Overlay */}
+			{isOpen && (
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{ duration: 0.2 }}
+					className="fixed inset-0 bg-black/60 backdrop-blur-sm z-10 md:hidden"
+					onClick={() => setIsOpen(false)}
+				/>
+			)}
+
+			{/* Mobile Menu */}
 			<motion.aside
-				initial={{ opacity: 0, x: -300 }}
-				animate={{ x: isOpen ? 0 : -300, opacity: isOpen ? 1 : 0 }}
-				transition={{ duration: 0.3 }}
-				className="fixed top-0 left-0 w-64 h-screen backdrop-blur-md bg-white/10 shadow-md z-50 sm:hidden"
+				initial={{ opacity: 0, x: -250 }}
+				animate={{ x: isOpen ? 0 : -250, opacity: isOpen ? 1 : 0 }}
+				className="fixed top-0 left-0 bottom-0 w-1/4 min-w-[250px] md:hidden p-4 bg-white/10 backdrop-blur-2xl border-r border-white/10 z-20"
 			>
-				<div className="p-4">
-					<div className="mb-8 text-2xl font-bold text-white sm:text-left text-right">
-						MovieApp
+				<h2 className="text-xl font-bold m-3 text-right">MovieDB</h2>
+				<div className="py-6">
+					<div className="space-y-4 bg-stone-500/20 backdrop-blur-2xl p-4  rounded-xl">
+						<h3 className="text-l font-medium">Search</h3>
+						<input
+							type="text"
+							name="title"
+							value={filters.title}
+							onChange={handleFilterChange}
+							placeholder="Search movies..."
+							className="w-full px-4 py-2 min-h-[44px] rounded-xl bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						/>
+						<input
+							type="number"
+							name="year"
+							value={filters.year}
+							onChange={handleFilterChange}
+							placeholder="Year"
+							min="1900"
+							max={new Date().getFullYear()}
+							className="w-full px-4 py-2 min-h-[44px] rounded-xl bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						/>
+						<select
+							name="genre"
+							value={filters.genre}
+							onChange={handleFilterChange}
+							className="w-full px-4 py-2 min-h-[44px] rounded-xl bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						>
+							<option value="">Select Genre</option>
+							{genres.map((genre) => (
+								<option key={genre} value={genre}>
+									{genre}
+								</option>
+							))}
+						</select>
 					</div>
+				</div>
+
+				{/* Mobile Search Results */}
+				<div className="space-y-4 bg-stone-600/10 backdrop-blur-2xl p-4  rounded-xl">
+					<h3 className="font-bold mb-2">Search Results</h3>
+					<ul className="space-y-2">
+						{["Movie1", "Movie2", "Movie3", "Movie4", "Movie5"].map((movie) => (
+							<li key={movie} className="p-2 rounded-lg bg-white/20">
+								{movie}
+							</li>
+						))}
+					</ul>
 				</div>
 			</motion.aside>
 		</>
