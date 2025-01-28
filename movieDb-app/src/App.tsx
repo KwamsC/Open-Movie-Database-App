@@ -5,7 +5,6 @@ import Navbar from "./common/Navbar";
 
 import Sidebar from "./common/Sidebar";
 import SidebarToggleButton from "./common/Sidebar/components/SidebarToggleButton";
-import Circle from "./common/Circle";
 
 const Home = lazy(() => import("./pages/Home"));
 const MovieDetail = lazy(() => import("./pages/MovieDetail"));
@@ -15,8 +14,8 @@ function App() {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	return (
     <>
-      <Circle position="top-left" margin="20vh" color="bg-stone-600" />
-      <Circle position="bottom-right" margin="20vh" color="bg-stone-500" />
+      <div id="circle1" className="h-[60vh] w-[60vh] -m-[20vh] rounded-full top-0 left-0 fixed z-0 bg-stone-600"/>
+      <div id="circle2" className="h-[60vh] w-[60vh] -m-[20vh] rounded-full bottom-0 right-0 fixed z-0 bg-stone-500"/>
       <div className="min-h-screen max-w-7xl z-20 md:m-10 self-center bg-white/15 backdrop-blur-2xl bg-clip-padding backdrop-filter border border-white/40 md:rounded-2xl text-white flex lg:mx-auto relative">
         {/* Sidebar */}
         <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
