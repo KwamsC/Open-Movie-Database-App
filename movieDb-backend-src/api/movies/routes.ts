@@ -12,7 +12,7 @@ router.get("/movies/:id", redisCaching, fetchMovie);
 
 /**
  * @route GET /api/v1/search
- * Search movies by title, genre, or year
+ * Search movies by title, type, or year
  */
 router.get("/search", redisCaching, searchMovies);
 

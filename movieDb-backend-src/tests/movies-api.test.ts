@@ -7,6 +7,7 @@ describe("Movie Routes", () => {
 	const mockMovie = {
 		Title: "Test Movie",
 		Year: "2024",
+    Type: "movie",
 		imdbID: "tt1234567",
 		Response: "True",
 	};
@@ -58,13 +59,13 @@ describe("Movie Routes", () => {
 			assert.deepStrictEqual(response.body, mockSearchResults);
 		});
 
-		it("should search movies with year and genre", async () => {
+		it("should search movies with year and type", async () => {
 			mock.method(global, "fetch", () => ({
 				json: async () => mockSearchResults,
 			}));
 
 			const response = await request(app)
-				.get("/api/v1/search?year=2024&genre=movie")
+				.get("/api/v1/search?title=test&year=2024&type=movie")
 				.expect(200);
 
 			assert.deepStrictEqual(response.body, mockSearchResults);

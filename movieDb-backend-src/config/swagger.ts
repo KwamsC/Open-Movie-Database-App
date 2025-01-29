@@ -20,7 +20,7 @@ export const apiDocumentation = {
 		"/search": {
 			get: {
 				tags: ["Movies"],
-				summary: "Search movies by title, genre, or year",
+				summary: "Search movies by title, type, or year",
 				parameters: [
 					{
 						name: "title",
@@ -30,12 +30,16 @@ export const apiDocumentation = {
 						schema: { type: "string" },
 					},
 					{
-						name: "genre",
-						in: "query",
-						required: false,
-						description: "Genre of the movie to filter",
-						schema: { type: "string" },
-					},
+            name: "type",
+            in: "query",
+            required: false,
+            description: "Type of media to search for",
+            schema: { 
+              type: "string",
+              enum: ["movie", "series", "episode"],
+              default: "movie"
+            }
+          },
 					{
 						name: "year",
 						in: "query",

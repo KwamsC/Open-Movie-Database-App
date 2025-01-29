@@ -43,7 +43,7 @@ const Home = () => {
 	if (error) return <ErrorPage message={error} />;
 
 	return (
-		<main className="md:m-6">
+		<main className="my-3 md:m-6">
 			{/* Featured Movie */}
 			{featuredMovie && (
 				<motion.div
