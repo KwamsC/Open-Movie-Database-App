@@ -58,7 +58,7 @@ const Home = () => {
 							alt={featuredMovie.Title}
 							className="w-full h-96 object-cover"
 						/>
-						<div className="absolute top-0 left-0 w-full h-full bg-black/40 p-6 flex flex-col justify-end">
+						<div className="absolute top-0 left-0 w-full h-full bg-black/70 p-6 flex flex-col justify-end">
 							<h2 className="text-3xl font-bold text-white">
 								{featuredMovie.Title}
 							</h2>
@@ -68,7 +68,7 @@ const Home = () => {
 				</motion.div>
 			)}
 
-			{/* You Might Like Section */}
+			{/* Featured Movies */}
 			<section>
 				<h3 className="text-xl font-bold mb-4">Featured Movies</h3>
 				<motion.div
@@ -81,7 +81,7 @@ const Home = () => {
 						<NavLink
 							to={`/movies/${movie.imdbID}`}
 							key={movie.imdbID}
-							className="bg-black/20 rounded-lg min-h-60 shadow-md p-4"
+							className="bg-black/40 rounded-lg min-h-60 shadow-md p-4"
 						>
 							<img
 								src={movie.Poster}

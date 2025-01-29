@@ -4,9 +4,10 @@ import type { Movie } from "../../../types/Movie";
 interface SearchResultsProps {
 	results: Movie[];
   isSearched?: boolean;
+  onItemClick?: () => void;
 }
 
-const SearchResults = ({ results, isSearched }: SearchResultsProps) => {
+const SearchResults = ({ results, isSearched, onItemClick}: SearchResultsProps) => {
   if (!isSearched) return null;
 
   return (
@@ -16,7 +17,7 @@ const SearchResults = ({ results, isSearched }: SearchResultsProps) => {
         <ul className="space-y-2">
           {results.map((movie) => (
             <li key={movie.imdbID} className="p-2 rounded-lg bg-white/20">
-              <NavLink to={`/movies/${movie.imdbID}`}>
+              <NavLink onClick={onItemClick} to={`/movies/${movie.imdbID}`}>
                 <h4 className="font-medium">{movie.Title}</h4>
                 <p className="text-sm text-gray-300">{movie.Year}</p>
               </NavLink>

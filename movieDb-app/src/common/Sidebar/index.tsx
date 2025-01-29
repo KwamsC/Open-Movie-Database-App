@@ -24,6 +24,10 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 		type: "",
 	});
 
+	const handleItemClick = () => {
+    setIsOpen(false);
+  };
+	
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearched, setIsSearched] = useState(false);
@@ -115,6 +119,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 				animate={{ x: isOpen ? 0 : -250, opacity: isOpen ? 1 : 0 }}
 				className="fixed top-0 left-0 bottom-0 w-1/4 min-w-[250px] md:hidden p-4 bg-stone-500/40 backdrop-blur-2xl border-r border-white/10 z-20"
 			>
+				<h2 className="text-xl font-bold m-3 mb-9 text-right">MovieDB</h2>
 				<SearchBox 
           filters={filters}
           isLoading={isLoading}
@@ -125,7 +130,11 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
         />
 
 				{/* Mobile Search Results */}
-        <SearchResults results={searchResults} isSearched={isSearched} />
+        <SearchResults 
+					results={searchResults} 
+					isSearched={isSearched} 
+					onItemClick={handleItemClick}
+				/>
 			</motion.aside>
 		</>
 	);

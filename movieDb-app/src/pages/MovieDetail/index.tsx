@@ -14,9 +14,9 @@ const MovieDetail = () => {
 	if (!movie) return <NotFound />;
 
 	return (
-		<div className="min-h-screen rounded-2xl bg-black/20 pt-20 md:m-6">
+		<div className="min-h-screen rounded-2xl bg-black/20 p-6 pt-16 md:m-6">
 			<NavLink
-				className="text-xl m-4 hover:bg-black/10 p-3 rounded-4xl"
+				className="text-xl bg-black/20 hover:bg-black/40 py-3 px-4 rounded-4xl"
 				to=".."
 			>
 				← back

@@ -11,6 +11,8 @@ jobs:
     defaults:
       run:
         working-directory: movieDb-app
+    env:
+      BASE_URL: ${{ secrets.E2E_URL }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -22,6 +24,8 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+      env:
+          BASE_URL: ${{ secrets.E2E_URL }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
