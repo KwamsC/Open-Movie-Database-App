@@ -8,6 +8,8 @@ const redisClient = createClient({
     host: process.env.REDIS_HOST || REDIS_HOST,
     port: Number(process.env.REDIS_PORT) || REDIS_PORT,
   },
+  disableOfflineQueue: false,
+  database: 0,
 });
 
 redisClient.on("error", (err) => console.error("Redis Client Error", err));
