@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useState } from "react";
+import { NavLink } from "react-router";
 // import { NavLink } from "react-router";
 // import { movieService } from "../../services/movieService";
 
@@ -42,9 +43,13 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 	return (
 		<>
 			<aside className="w-1/4 min-w-[250px] hidden md:block p-4">
-				<h2 className="text-xl h-16 font-bold content-center mb-6">MovieDB</h2>
+				<NavLink to="/">
+					<h2 className="text-xl h-16 font-bold content-center mb-6">
+						MovieDB
+					</h2>
+				</NavLink>
 				{/* SearchBox */}
-				<div className="space-y-4 bg-black/60 backdrop-blur-2xl p-4 rounded-xl">
+				<div className="space-y-4 bg-black/20 p-4 rounded-xl">
 					<h3 className="text-l font-medium">Search</h3>
 					<input
 						type="text"
@@ -80,7 +85,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 				</div>
 
 				{/* Search Results */}
-				<div className="space-y-4 bg-black/60 backdrop-blur-2xl p-4 mt-8 rounded-xl">
+				<div className="space-y-4 bg-black/20 p-4 mt-8 rounded-xl">
 					<h3 className="text-lg font-bold mb-2">Search Results</h3>
 					<ul className="space-y-2">
 						{["Movie1", "Movie2", "Movie3", "Movie4", "Movie5"].map((movie) => (

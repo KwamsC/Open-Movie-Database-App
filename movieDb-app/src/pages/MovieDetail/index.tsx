@@ -1,17 +1,27 @@
 import { useParams } from "react-router";
+import { NavLink } from "react-router";
+import Loader from "../../common/Loader";
 import { useMovie } from "../../hooks/useMovie";
+import ErrorPage from "../ErrorPage";
+import NotFound from "../NotFound";
 
 const MovieDetail = () => {
 	const { movieId } = useParams<{ movieId: string }>();
 	const { movie, loading, error } = useMovie(movieId || "");
 
-	if (loading) return <div>Loading...</div>;
-	if (error) return <div>Error: {error}</div>;
-	if (!movie) return <div>Movie not found</div>;
+	if (loading) return <Loader />;
+	if (error) return ErrorPage({ message: error });
+	if (!movie) return <NotFound />;
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-blue-900 to-gray-800 pt-20">
-			<div className="max-w-4xl mx-auto p-4 text-white">
+		<div className="min-h-screen rounded-2xl bg-black/20 pt-20 md:m-6">
+			<NavLink
+				className="text-xl m-4 hover:bg-black/10 p-3 rounded-4xl"
+				to=".."
+			>
+				← back
+			</NavLink>
+			<div className="max-w-4xl mx-auto p-4 mt-4 text-white">
 				<h1 className="text-3xl font-bold mb-4">{movie.Title}</h1>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 					<img
