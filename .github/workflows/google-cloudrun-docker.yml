@@ -61,7 +61,7 @@ jobs:
           node-version: '23.6.1'
       - run: |
           npm ci
-          NODE_ENV=test npm test:backend
+          npm run test:backend
         env:
           NODE_ENV: test
 
