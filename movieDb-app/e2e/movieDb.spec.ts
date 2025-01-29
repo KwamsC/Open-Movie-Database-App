@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Home Page', () => {
   test.beforeEach(async ({ page }) => {
+    console.log('Testing URL:', process.env.BASE_URL);
     await page.goto('/');
   });
 
