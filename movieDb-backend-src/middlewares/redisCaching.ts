@@ -6,7 +6,7 @@ const CACHE_DURATION = 60 * 60 * 24; // 24 hours
 export const redisCaching: RequestHandler = async (req, res, next) => {
 	if (!redisClient?.isOpen) {
 		console.warn("Redis client not connected, skipping cache");
-		return next()
+		return next();
 	}
 
 	try {
