@@ -1,6 +1,6 @@
 const Loader = () => {
 	return (
-		<div className="min-h-screen rounded-2xl bg-black/20 p-20 md:m-6">
+		<div className="min-h-screen rounded-2xl bg-black/20 p-20 md:m-6 my-3">
 			<div className="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2">
 				<svg
 					aria-hidden="true"

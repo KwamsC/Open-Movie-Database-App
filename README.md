@@ -3,7 +3,7 @@ A web application that allows users to search and explore movies using The Open 
 
 ## Features
 - Search movies by title
-- Filter movies by year and genre
+- Filter movies by year and type
 - View detailed movie information
 - OpenAPI documentation
 
