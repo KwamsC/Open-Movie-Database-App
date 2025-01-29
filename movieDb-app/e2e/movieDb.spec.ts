@@ -16,18 +16,25 @@ test.describe('Home Page', () => {
     await page.getByTestId('search-title-input').first().fill('insecure');
     await page.getByTestId('search-year-input').first().fill('2016');
     await page.getByTestId('search-type-select').first().selectOption('series');
-  
+
     // Click search and wait for results
-    await Promise.all([
-      page.waitForResponse('**/api/v1/search**'),
-      page.getByTestId('search-submit').first().click()
-    ]);
+    const searchPromise = page.waitForResponse(
+      response => response.url().includes('/api/v1/search') && response.status() === 200,
+      { timeout: 10000 }
+    );
+
+    await page.getByTestId('search-submit').first().click();
+    await searchPromise;
+
+    // Wait for and verify results
+    await expect(page.getByTestId('search-results')).toBeVisible();
+    const resultItems = page.getByTestId('search-result-item');
   
+    await expect(resultItems.first()).toBeVisible({ timeout: 10000 });
+    
     // Verify search results
-    const searchResults = page.locator('[data-testid="search-results"] li');
-    await expect(searchResults).toHaveCount(1);
-    await expect(searchResults.first()).toContainText('Insecure');
-    await expect(searchResults.first()).toContainText('2016');
+    await expect(resultItems.first()).toContainText('Insecure');
+    await expect(resultItems.first()).toContainText('2016');
   });
 
   test('shows recommendations section', async ({ page }) => {

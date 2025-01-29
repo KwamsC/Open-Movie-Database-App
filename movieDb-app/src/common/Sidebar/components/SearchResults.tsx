@@ -16,7 +16,7 @@ const SearchResults = ({ results, isSearched, onItemClick}: SearchResultsProps) 
       {results?.length > 0 ? (
         <ul className="space-y-2">
           {results.map((movie) => (
-            <li key={movie.imdbID} className="p-2 rounded-lg bg-white/20">
+            <li key={movie.imdbID} data-testid="search-result-item" className="p-2 rounded-lg bg-white/20">
               <NavLink onClick={onItemClick} to={`/movies/${movie.imdbID}`}>
                 <h4 className="font-medium">{movie.Title}</h4>
                 <p className="text-sm text-gray-300">{movie.Year}</p>
@@ -25,7 +25,7 @@ const SearchResults = ({ results, isSearched, onItemClick}: SearchResultsProps) 
           ))}
         </ul>
       ) : (
-        <div className="flex flex-col items-center justify-center h-32 text-gray-400">
+        <div data-testid="no-results" className="flex flex-col items-center justify-center h-32 text-gray-400">
           <p>No movies found</p>
           <p className="text-sm">Try adjusting your search criteria</p>
         </div>
