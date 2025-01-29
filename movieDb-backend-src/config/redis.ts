@@ -7,8 +7,8 @@ const redisClient = createClient({
   socket: {
     host: process.env.REDIS_HOST || REDIS_HOST,
     port: Number(process.env.REDIS_PORT) || REDIS_PORT,
+    reconnectStrategy: (retries) => Math.min(retries * 50, 1000),
   },
-  disableOfflineQueue: false,
   database: 0,
 });
 
