@@ -1,3 +1,5 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import cors, { type CorsOptions } from "cors";
 import express, { type Application } from "express";
 import { rateLimit } from "express-rate-limit";
@@ -6,8 +8,6 @@ import swaggerUi from "swagger-ui-express";
 import movieRoutes from "./api/movies/routes.ts";
 import { apiDocumentation } from "./config/swagger.ts";
 import { errorHandler } from "./middlewares/errorHandler.ts";
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,17 +39,19 @@ app.use(express.static("movieDb-app/dist"));
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(apiDocumentation));
 
 // Middleware
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", "data:", "https:", "http:"],
-      connectSrc: ["'self'", "https:", "http:"],
-    },
-  },
-}));
+app.use(
+	helmet({
+		contentSecurityPolicy: {
+			directives: {
+				defaultSrc: ["'self'"],
+				scriptSrc: ["'self'", "'unsafe-inline'"],
+				styleSrc: ["'self'", "'unsafe-inline'"],
+				imgSrc: ["'self'", "data:", "https:", "http:"],
+				connectSrc: ["'self'", "https:", "http:"],
+			},
+		},
+	}),
+);
 app.use(express.json({ limit: "300kb" }));
 app.use(express.urlencoded({ extended: false }));
 app.use(
@@ -69,8 +71,8 @@ app.get("/health", (req, res) => {
 // Routes
 app.use("/api/v1", movieRoutes);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../movieDb-app/dist/index.html'));
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "../movieDb-app/dist/index.html"));
 });
 
 // Error Handler
