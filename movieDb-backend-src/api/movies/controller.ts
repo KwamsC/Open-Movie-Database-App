@@ -22,19 +22,23 @@ export const searchMovies: RequestHandler = async (req, res) => {
 	try {
 		const { title, type, year } = req.query;
 
-    const queryParams = new URLSearchParams();
+		const queryParams = new URLSearchParams();
 
-		if (title) queryParams.append('s', title as string);
-    if (type) queryParams.append('type', type as string);
-    if (year) queryParams.append('y', year as string);
-    queryParams.append('apikey', process.env.API_KEY as string);
+		if (title) queryParams.append("s", title as string);
+		if (type) queryParams.append("type", type as string);
+		if (year) queryParams.append("y", year as string);
+		queryParams.append("apikey", process.env.API_KEY as string);
 
 		const url = `${process.env.BASE_URL}?${queryParams}`;
 		const response = await fetch(url);
 		const movies = await response.json();
 
 		if (movies.Response === "False") {
-			res.status(404).json({ error: `No movies found ${title} ${type} ${process.env.API_KEY}` });
+			res
+				.status(404)
+				.json({
+					error: `No movies found ${title} ${type} ${process.env.API_KEY}`,
+				});
 			return;
 		}
 
