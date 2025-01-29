@@ -6,10 +6,28 @@ test.describe('Home Page', () => {
   });
 
   test('displays featured movie section', async ({ page }) => {
-    console.log('Testing URL:', process.env.BASE_URL);
     const desktopHeader = page.getByTestId('desktop-header');
     await expect(desktopHeader).toBeVisible();
     await expect(desktopHeader).toHaveText('MovieDB');
+  });
+
+  test('can search for "Insecure" series from 2016', async ({ page }) => {
+    // Fill search form
+    await page.getByTestId('search-title-input').first().fill('insecure');
+    await page.getByTestId('search-year-input').first().fill('2016');
+    await page.getByTestId('search-type-select').first().selectOption('series');
+  
+    // Click search and wait for results
+    await Promise.all([
+      page.waitForResponse('**/api/v1/search**'),
+      page.getByTestId('search-submit').first().click()
+    ]);
+  
+    // Verify search results
+    const searchResults = page.locator('[data-testid="search-results"] li');
+    await expect(searchResults).toHaveCount(1);
+    await expect(searchResults.first()).toContainText('Insecure');
+    await expect(searchResults.first()).toContainText('2016');
   });
 
   test('shows recommendations section', async ({ page }) => {

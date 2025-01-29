@@ -24,7 +24,7 @@ const SearchBox = ({
   const MEDIA_TYPES = ["movie", "series", "episode"];
 
   return (
-    <form className="space-y-4 bg-black/20 p-4 rounded-xl">
+    <form data-testid="search-form" className="space-y-4 bg-black/20 p-4 rounded-xl">
       <div className="flex justify-between items-center">
         <h3 className="text-l font-medium">Search</h3>
         <button
@@ -42,7 +42,7 @@ const SearchBox = ({
         </label>
         <input
           id="media-title"
-          data-testid="search-title"
+          data-testid="search-title-input"
           type="text"
           name="title"
           value={filters.title}
@@ -59,7 +59,7 @@ const SearchBox = ({
         </label>
         <input
           id="release-year"
-          data-testid="search-year"
+          data-testid="search-year-input"
           type="number"
           name="year"
           value={filters.year}
@@ -77,7 +77,7 @@ const SearchBox = ({
         </label>
         <select
           id="media-type"
-          data-testid="search-type"
+          data-testid="search-type-select"
           name="type"
           value={filters.type}
           onChange={onChange}
@@ -95,6 +95,7 @@ const SearchBox = ({
 
       <button
         type="submit"
+        data-testid="search-submit"
         onClick={onSearch}
         disabled={isLoading}
         className="w-full px-4 py-2 font-medium mt-3 bg-emerald-700 hover:bg-emerald-800 disabled:opacity-50 text-white rounded-xl"
