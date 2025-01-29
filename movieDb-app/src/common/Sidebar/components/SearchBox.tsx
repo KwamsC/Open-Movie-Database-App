@@ -24,7 +24,7 @@ const SearchBox = ({
   const MEDIA_TYPES = ["movie", "series", "episode"];
 
   return (
-    <form data-testid="search-form" className="space-y-4 bg-black/20 p-4 rounded-xl">
+    <form className="space-y-4 bg-black/20 p-4 rounded-xl">
       <div className="flex justify-between items-center">
         <h3 className="text-l font-medium">Search</h3>
         <button

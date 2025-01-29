@@ -27,7 +27,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 	const handleItemClick = () => {
     setIsOpen(false);
   };
-	
+
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearched, setIsSearched] = useState(false);
@@ -88,7 +88,8 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 					</h2>
 				</NavLink>
 				{/* SearchBox */}
-				<SearchBox 
+				<SearchBox
+					data-testid="search-form-desktop"
           filters={filters}
           isLoading={isLoading}
           onSearch={handleSearch}
@@ -121,6 +122,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 			>
 				<h2 data-testid="mobile-header" className="text-xl font-bold m-3 mb-9 text-right">MovieDB</h2>
 				<SearchBox 
+					data-testid="search-form-mobile" 
           filters={filters}
           isLoading={isLoading}
           onSearch={handleSearch}
