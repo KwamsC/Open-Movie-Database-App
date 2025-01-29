@@ -1,18 +1,37 @@
 import { createClient } from "redis";
 
-const REDIS_HOST = 'localhost';
-const REDIS_PORT = 6379;
+const isTestEnvironment = process.env.NODE_ENV === 'test' ;
 
-const redisClient = createClient({
-  socket: {
-    host: process.env.REDIS_HOST || REDIS_HOST,
-    port: Number(process.env.REDIS_PORT) || REDIS_PORT,
-    reconnectStrategy: (retries) => Math.min(retries * 50, 1000),
-  },
-  database: 0,
-});
+const createRedisClient = () => {
+  if (isTestEnvironment) {
+    console.log('Test environment detected, skipping Redis connection');
+    return;
+  }
 
-redisClient.on("error", (err) => console.error("Redis Client Error", err));
-redisClient.connect();
+  const client = createClient({
+    socket: {
+      host: process.env.REDIS_HOST || 'localhost',
+      port: Number(process.env.REDIS_PORT) || 6379,
+    },
+  });
+
+  client.on("error", (err) => {
+    console.error("Redis Client Error:", err);
+    if (!isTestEnvironment) {
+      process.exit(1);
+    }
+  });
+
+  client.on("connect", () => {
+    console.log("Connected to Redis");
+  });
+
+  client.connect()
+
+  return client;
+};
+
+const redisClient = createRedisClient();
 
 export default redisClient;
+

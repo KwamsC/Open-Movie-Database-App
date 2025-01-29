@@ -11,7 +11,7 @@
     "start": "node movieDb-backend-src/index.ts",
     "setup:env": "node scripts/setupEnv.ts",
     "dev": "node --watch --env-file .env movieDb-backend-src/index.ts",
-    "test": "node --test **/*.test.ts",
+    "test:backend": "NODE_ENV=test node --test movieDb-backend-src/tests/**/*.test.ts",
     "lint": "biome lint --write movieDb-backend-src",
     "format": "biome format --write movieDb-backend-src",
     "check": "biome check --write movieDb-backend-src "
