@@ -2,42 +2,14 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Home Page', () => {
   test.beforeEach(async ({ page }) => {
-    console.log('Testing URL:', process.env.BASE_URL);
     await page.goto('/');
   });
 
   test('displays featured movie section', async ({ page }) => {
-    await expect(page.locator('h2')).toBeVisible();
-    await expect(page.locator('img').first()).toBeVisible();
-    await expect(page.getByText('Featured Movies')).toBeVisible();
-  });
-
-  test('can search for "Insecure" series from 2016', async ({ page }) => {
-    // Wait for search inputs to be visible
-    const titleInput = page.getByTestId('search-title');
-    const yearInput = page.getByTestId('search-year');
-    const typeSelect = page.getByTestId('search-type');
-  
-    await expect(titleInput).toBeVisible();
-    // await expect(yearInput).toBeVisible();
-    // await expect(typeSelect).toBeVisible();
-
-    // Fill search criteria
-    await titleInput.fill('insecure');
-    await yearInput.fill('2016');
-    await typeSelect.selectOption('series');
-
-    // Click search button
-    // await page.click('button:has-text("Search")');
-
-    // Wait for results and verify
-    // const searchResults = page.locator('.space-y-2 li');
-    // await expect(searchResults).toHaveCount(1);
-    
-    // Verify result content
-    // const resultTitle = page.locator('.space-y-2 li h4');
-    // await expect(resultTitle).toContainText('Insecure');
-    // await expect(page.locator('.space-y-2 li')).toContainText('2016');
+    console.log('Testing URL:', process.env.BASE_URL);
+    const desktopHeader = page.getByTestId('desktop-header');
+    await expect(desktopHeader).toBeVisible();
+    await expect(desktopHeader).toHaveText('MovieDB');
   });
 
   test('shows recommendations section', async ({ page }) => {

@@ -83,7 +83,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 		<>
 			<aside className="w-1/4 min-w-[250px] hidden md:block p-4">
 				<NavLink to="/">
-					<h2 className="text-xl h-16 font-bold content-center mb-6">
+					<h2 data-testid="desktop-header" className="text-xl h-16 font-bold content-center mb-6">
 						MovieDB
 					</h2>
 				</NavLink>
@@ -119,7 +119,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 				animate={{ x: isOpen ? 0 : -250, opacity: isOpen ? 1 : 0 }}
 				className="fixed top-0 left-0 bottom-0 w-1/4 min-w-[250px] md:hidden p-4 bg-stone-500/40 backdrop-blur-2xl border-r border-white/10 z-20"
 			>
-				<h2 className="text-xl font-bold m-3 mb-9 text-right">MovieDB</h2>
+				<h2 data-testid="mobile-header" className="text-xl font-bold m-3 mb-9 text-right">MovieDB</h2>
 				<SearchBox 
           filters={filters}
           isLoading={isLoading}
