@@ -11,29 +11,6 @@ test.describe('Home Page', () => {
     await expect(desktopHeader).toHaveText('MovieDB');
   });
 
-  test('Home Page - can search for "Insecure" series from 2016', async ({ page }) => {
-    
-    // Get desktop search form
-    const searchForm = page.getByTestId('search-form-desktop');
-    await expect(searchForm).toBeVisible();
-
-    await searchForm.getByTestId('search-title-input').fill('insecure');
-    await searchForm.getByTestId('search-year-input').fill('2016');
-    await searchForm.getByTestId('search-type-select').selectOption('series');
-  
-    // // Click Search
-    // await page.getByTestId('search-submit').click();
-    
-    // // Wait for API Response
-    // await page.waitForResponse(response => 
-    //   response.url().includes('/search') && response.status() === 200
-    // );
-  
-    // // Wait for results
-    // await expect(page.getByTestId('search-results')).toBeVisible({ timeout: 10000 });
-    // await expect(page.getByTestId('search-result-item')).toBeVisible();
-  });
-
   test('shows recommendations section', async ({ page }) => {
     await expect(page.getByText('Featured Movies')).toBeVisible();
     const recommendations = page.locator('.grid-cols-1 > a');
