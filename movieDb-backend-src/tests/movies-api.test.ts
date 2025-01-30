@@ -7,7 +7,7 @@ describe("Movie Routes", () => {
 	const mockMovie = {
 		Title: "Test Movie",
 		Year: "2024",
-    Type: "movie",
+		Type: "movie",
 		imdbID: "tt1234567",
 		Response: "True",
 	};

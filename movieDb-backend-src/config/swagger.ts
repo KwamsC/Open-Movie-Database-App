@@ -30,16 +30,16 @@ export const apiDocumentation = {
 						schema: { type: "string" },
 					},
 					{
-            name: "type",
-            in: "query",
-            required: false,
-            description: "Type of media to search for",
-            schema: { 
-              type: "string",
-              enum: ["movie", "series", "episode"],
-              default: "movie"
-            }
-          },
+						name: "type",
+						in: "query",
+						required: false,
+						description: "Type of media to search for",
+						schema: {
+							type: "string",
+							enum: ["movie", "series", "episode"],
+							default: "movie",
+						},
+					},
 					{
 						name: "year",
 						in: "query",
