@@ -1,10 +1,10 @@
-import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router";
 import Loader from "../../common/Loader";
 import { movieService } from "../../services/movieService";
 import type { Movie } from "../../types/Movie";
 import ErrorPage from "../ErrorPage";
+import FeaturedMovie from "./components/FeaturedMovie";
+import TopFeaturedMovie from "./components/TopFeaturedMovie";
 
 const Home = () => {
 	const FEATURED_MOVIES = [
@@ -45,64 +45,16 @@ const Home = () => {
 	return (
 		<main className="my-3 md:m-6">
 			{/* Featured Movie */}
-			{featuredMovie && (
-				<motion.div
-					initial={{ opacity: 0, y: -20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-					className="relative bg-black/20 rounded-2xl overflow-hidden shadow-lg mb-8"
-				>
-					<NavLink to={`/movies/${featuredMovie.imdbID}`}>
-						<motion.div
-							initial={{ opacity: 0, x: -20 }}
-							animate={{ opacity: 1, x: 0 }}
-							transition={{ delay: 0.3, duration: 0.4 }}
-							className="absolute top-4 left-4 z-10 px-3 py-1 bg-stone-400/50 backdrop-blur-sm rounded-4xl"
-						>
-							<span className="text-sm font-medium text-white">
-								🔥 Top Featured
-							</span>
-						</motion.div>
-						<img
-							src={featuredMovie.Poster}
-							alt={featuredMovie.Title}
-							className="w-full h-96 object-cover"
-						/>
-						<div className="absolute top-0 left-0 w-full h-full bg-black/70 p-6 flex flex-col justify-end">
-							<h2 className="text-3xl font-bold text-white">
-								{featuredMovie.Title}
-							</h2>
-							<p className="mt-2 text-sm text-gray-300">{featuredMovie.Plot}</p>
-						</div>
-					</NavLink>
-				</motion.div>
-			)}
+			{featuredMovie && <TopFeaturedMovie movie={featuredMovie} />}
 
 			{/* Featured Movies */}
 			<section>
 				<h3 className="text-xl font-bold mb-4">Featured Movies</h3>
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ duration: 0.6 }}
-					className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-				>
-					{recommendations.map((movie) => (
-						<NavLink
-							to={`/movies/${movie.imdbID}`}
-							key={movie.imdbID}
-							className="bg-black/40 rounded-lg min-h-60 shadow-md p-4"
-						>
-							<img
-								src={movie.Poster}
-								alt={movie.Title}
-								className="rounded-lg mb-4 w-full h-[300px] object-cover"
-							/>
-							<h4 className="text-sm font-bold">{movie.Title}</h4>
-							<p className="text-xs text-gray-300">{movie.Year}</p>
-						</NavLink>
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+					{recommendations.map((movie, index) => (
+						<FeaturedMovie key={movie.imdbID} movie={movie} index={index} />
 					))}
-				</motion.div>
+				</div>
 			</section>
 		</main>
 	);

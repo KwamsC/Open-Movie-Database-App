@@ -24,11 +24,12 @@ const SearchBox = ({
 	onKeyDown,
 }: SearchBoxProps) => {
 	const MEDIA_TYPES = ["movie", "series"];
+	const isDisabled = !filters.title || isLoading;
 
 	return (
 		<form
 			data-testid={`search-form-${testId}`}
-			className="space-y-4 bg-black/20 p-4 rounded-xl"
+			className="space-y-4 bg-stone-800/50 p-4 rounded-xl"
 		>
 			<div className="flex justify-between items-center">
 				<h3 className="text-l font-medium">Search</h3>
@@ -111,8 +112,8 @@ const SearchBox = ({
 				type="submit"
 				data-testid={`search-submit-${testId}`}
 				onClick={onSearch}
-				disabled={isLoading}
-				className="w-full px-4 py-2 font-medium mt-3 bg-emerald-700 hover:bg-emerald-800 disabled:opacity-50 text-white rounded-xl"
+				disabled={isDisabled}
+				className={`w-full px-4 py-2 font-medium mt-3 bg-emerald-700 ${!isDisabled && "hover:bg-emerald-800"} disabled:opacity-50 text-white rounded-xl`}
 			>
 				{isLoading ? "Searching..." : "Search"}
 			</button>

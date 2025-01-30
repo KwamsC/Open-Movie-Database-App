@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Route, Routes } from "react-router";
 import Navbar from "./common/Navbar";
 
+import Circle from "./common/Circle";
+import Loader from "./common/Loader";
 import Sidebar from "./common/Sidebar";
 import SidebarToggleButton from "./common/Sidebar/components/SidebarToggleButton";
 
@@ -14,14 +16,10 @@ function App() {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	return (
 		<>
-			<div
-				id="circle1"
-				className="h-[70vh] w-[70vh] -m-[20vh] rounded-full top-0 left-0 fixed z-0 bg-stone-600"
-			/>
-			<div
-				id="circle2"
-				className="h-[70vh] w-[70vh] -m-[20vh] rounded-full bottom-0 right-0 fixed z-0 bg-stone-500"
-			/>
+			{/* Background Circles */}
+			<Circle id="circle1" position="top-left" color="bg-stone-600" />
+			<Circle id="circle2" position="bottom-right" color="bg-stone-500" />
+
 			<div className="min-h-screen max-w-7xl z-20 md:m-10 self-center bg-white/10 backdrop-blur-2xl bg-clip-padding backdrop-filter border border-white/40 md:rounded-2xl text-white flex lg:mx-auto relative">
 				{/* Sidebar */}
 				<Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
@@ -36,7 +34,7 @@ function App() {
 					/>
 
 					{/* Main Content */}
-					<Suspense fallback={<div>Loading...</div>}>
+					<Suspense fallback={<Loader />}>
 						<Routes>
 							<Route path="/" element={<Home />} />
 							<Route path="movies/:movieId" element={<MovieDetail />} />

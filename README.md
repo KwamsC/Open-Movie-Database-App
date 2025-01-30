@@ -45,12 +45,12 @@ nvm install
 # Install backend dependencies
 npm install
 
+# add env keys to environment
+npm run setup:env
+
 # Install frontend dependencies
 cd movieDb-app
 npm install
-
-# add env keys to environment
-npm run setup:env
 ```
 
 ### Setup redis
@@ -104,9 +104,10 @@ This application is containerized with Docker, combining both frontend and backe
 
 This made it easier to deploy to a managed service like GCP, Azure, AWS etc.
 I chose GCP because I started using it last year and the free tier was generous.
-Based on the amount of users and load, the number of instances can be increased if we hit limits. I started with a cold start (0 instances) to not drive cost.
+Based on the amount of users and load, the number of instances can be increased if limits are hit. I started with a cold start (0 instances) to not drive cost.
 
 I made a design based on mockup made by Arfi Moulana found on [Dribbble](https://dribbble.com/shots/21891328-Steary-Stream-App-Spatial-UI-Concept)
 ![App Design](./movieDb-app/public/app-design.png)
+*App Design*
 
-I Would have loved to add users and favourite list to it, but because of the time constraint. I decided to focus on making the app production ready and deploy it.
+I would loved to add users and favourite list to it, but because of the time constraint. I decided to focus on making the app production ready and deploy it.
