@@ -53,6 +53,16 @@ const Home = () => {
 					className="relative bg-black/20 rounded-2xl overflow-hidden shadow-lg mb-8"
 				>
 					<NavLink to={`/movies/${featuredMovie.imdbID}`}>
+						<motion.div
+							initial={{ opacity: 0, x: -20 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ delay: 0.3, duration: 0.4 }}
+							className="absolute top-4 left-4 z-10 px-3 py-1 bg-stone-400/50 backdrop-blur-sm rounded-4xl"
+						>
+							<span className="text-sm font-medium text-white">
+								🔥 Top Featured
+							</span>
+						</motion.div>
 						<img
 							src={featuredMovie.Poster}
 							alt={featuredMovie.Title}
