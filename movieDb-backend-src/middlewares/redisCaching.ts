@@ -2,7 +2,7 @@ import type { Request, RequestHandler } from "express";
 import redisClient from "../config/redis.ts";
 
 const CACHE_DURATION = {
-	SEARCH: 60 * 60, // 1 hour for search results
+	SEARCH: 60 * 60 * 2, // 2 hour for search results
 	DETAIL: 60 * 60 * 24, // 24 hours for movie details
 };
 

@@ -34,11 +34,9 @@ export const searchMovies: RequestHandler = async (req, res) => {
 		const movies = await response.json();
 
 		if (movies.Response === "False") {
-			res
-				.status(404)
-				.json({
-					error: `No movies found ${title} ${type} ${process.env.API_KEY}`,
-				});
+			res.status(404).json({
+				error: `No movies found ${title} ${type} ${process.env.API_KEY}`,
+			});
 			return;
 		}
 

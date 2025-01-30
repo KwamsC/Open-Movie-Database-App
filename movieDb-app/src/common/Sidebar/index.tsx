@@ -92,7 +92,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 				</NavLink>
 				{/* SearchBox */}
 				<SearchBox
-					data-testid="search-form-desktop"
+					testId="desktop"
 					filters={filters}
 					isLoading={isLoading}
 					onSearch={handleSearch}
@@ -103,7 +103,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 
 				{/* Search Results */}
 				<SearchResults
-					data-testid="search-results-mobile"
+					testId="desktop"
 					results={searchResults}
 					isSearched={isSearched}
 				/>
@@ -134,7 +134,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 					MovieDB
 				</h2>
 				<SearchBox
-					data-testid="search-form-mobile"
+					testId="mobile"
 					filters={filters}
 					isLoading={isLoading}
 					onSearch={handleSearch}
@@ -145,7 +145,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 
 				{/* Mobile Search Results */}
 				<SearchResults
-					data-testid="search-results-desktop"
+					testId="mobile"
 					results={searchResults}
 					isSearched={isSearched}
 					onItemClick={handleItemClick}
