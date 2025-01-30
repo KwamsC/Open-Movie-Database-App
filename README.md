@@ -1,27 +1,27 @@
 # Open-Movie-Database-App
 A web application that allows users to search and explore movies using The Open Movie Database (OMDb) API. Users can search for movies by title, filter by year and title, and view detailed information about specific movies.
 
-## Features
-- Search movies by title with instant results
-- Filter by year and media type (movie/series/episode)
-- View detailed movie information with posters
-- Responsive mobile-first design
-- Redis caching for improved performance
-- OpenAPI/Swagger documentation
+## ✨ Key Features
+- 🔍 **Search Movies & Shows**: Real-time movie search with type-ahead suggestions
+- 🎬 **Content Filtering**: Filter by year and media type (movies/series)
+- 📱 **Responsive Design**: Seamless experience across all devices
+- ⚡️ **Performance**: Redis caching for fast responses
+- 📚 **API Documentation**: Swagger documentation
 
-## Tech Stack
+## 🛠 Tech Stack
+
 ### Frontend
-- ReactJS (Vite)
-- TypeScript
-- TailwindCSS
-- Framer Motion
+- React 18 with Vite
+- TypeScript for type safety
+- TailwindCSS for styling
+- Framer Motion for animations
 
 ### Backend
 - NodeJS
 - ExpressJS
 - Swagger (OpenAPI documentation)
 
-## Setup
+## 🔑 Setup
 
 ### Prerequisites
 - Node.js (v23.6.1)
@@ -37,6 +37,16 @@ If you have `nvm` installed, run the following command to get the right node ver
 
 ```bash
 nvm install
+
+# Install backend dependencies
+npm install
+
+# Install frontend dependencies
+cd movieDb-app
+npm install
+
+# add env keys to environment
+npm run setup:env
 ```
 
 ### Setup redis
@@ -53,18 +63,7 @@ brew services start redis
 brew services list | grep redis
 ```
 
-
-### Install dependencies
-```bash
-# Install backend dependencies
-npm install
-
-# Install frontend dependencies
-cd movieDb-app
-npm install
-```
-
-### Run application
+## Run application
 
 Build the frontend application and run the backend application to start the app
 
@@ -77,12 +76,6 @@ npm run build
 npm run dev
 ```
 
-To run tests locally, run the following command (backend)
-
-```bash
-npm run test
-```
-
 ## API Documentation
 The API documentation is available at `/docs` endpoint when running the application. The backend provides two main endpoints:
 - `GET /api/v1/search` - Search movies with filters
@@ -91,12 +84,12 @@ The API documentation is available at `/docs` endpoint when running the applicat
 ## Testing
 
 ```bash
-# Run backend tests
-npm test
+# Integration test api's
+npm run test
 
-# Run frontend tests
+# E2E test
 cd movieDb-app
-npm test
+npm run test:e2e
 ```
 
 ## Project Considerations
