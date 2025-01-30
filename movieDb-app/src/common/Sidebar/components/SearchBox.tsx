@@ -23,7 +23,7 @@ const SearchBox = ({
 	onChange,
 	onKeyDown,
 }: SearchBoxProps) => {
-	const MEDIA_TYPES = ["movie", "series", "episode"];
+	const MEDIA_TYPES = ["movie", "series"];
 
 	return (
 		<form
@@ -87,7 +87,7 @@ const SearchBox = ({
 					htmlFor="media-type"
 					className="block text-sm font-medium text-gray-300"
 				>
-					Movie | Series | Episode
+					Movie | Series
 				</label>
 				<select
 					id="media-type"
