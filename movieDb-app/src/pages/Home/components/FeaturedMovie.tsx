@@ -1,9 +1,9 @@
 import { motion } from "motion/react";
 import { NavLink } from "react-router";
-import type { Movie } from "../../../types/Movie";
+import type { Search } from "../../../types/MovieSearch";
 
 interface FeaturedMoviesProps {
-	movie: Movie;
+	movie: Search;
 	index: number;
 }
 

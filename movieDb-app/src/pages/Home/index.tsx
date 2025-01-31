@@ -5,18 +5,13 @@ import type { Movie } from "../../types/Movie";
 import ErrorPage from "../ErrorPage";
 import FeaturedMovie from "./components/FeaturedMovie";
 import TopFeaturedMovie from "./components/TopFeaturedMovie";
+import type { MovieSearch, Search, } from "../../types/MovieSearch";
 
 const Home = () => {
-	const FEATURED_MOVIES = [
-		"tt9362722",
-		"tt4154796",
-		"tt15398776",
-		"tt13622970",
-		"tt9603212",
-	];
+	const FEATURED_MOVIE_ID = "tt9362722";
 
 	const [featuredMovie, setFeaturedMovie] = useState<Movie | null>(null);
-	const [recommendations, setRecommendations] = useState<Movie[]>([]);
+	const [recommendations, setRecommendations] = useState<Search[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
@@ -24,11 +19,18 @@ const Home = () => {
 		const fetchMovies = async () => {
 			try {
 				setLoading(true);
-				const movies = await Promise.all(
-					FEATURED_MOVIES.map((id) => movieService.fetchMovie(id)),
-				);
-				setFeaturedMovie(movies[0]);
-				setRecommendations(movies.slice(1));
+        
+				const featured: Movie = await movieService.fetchMovie(FEATURED_MOVIE_ID);
+        setFeaturedMovie(featured);
+
+        const marvelMovies: MovieSearch = await movieService.searchMovies("Marvel", "", "movie");
+        if (marvelMovies.Search) {
+          const filteredMovies = marvelMovies.Search
+            .filter(movie => movie.imdbID !== FEATURED_MOVIE_ID)
+            .slice(0, 4);
+          
+          setRecommendations(filteredMovies);
+        }
 			} catch (err) {
 				setError(err instanceof Error ? err.message : "Failed to fetch movies");
 			} finally {

@@ -35,14 +35,21 @@ test.describe('Home Page', () => {
   });
 
   test('shows recommendations section', async ({ page }) => {
+    const recommendationsHeader = page.getByText('Featured Movies');
+    await expect(recommendationsHeader).toBeVisible();
+
     await expect(page.getByText('Featured Movies')).toBeVisible();
-    const recommendations = page.locator('.grid-cols-1 > a');
+    
+    const recommendations = page.locator('.grid-cols-1 > motion.div');
     await expect(recommendations).toHaveCount(4);
   });
 
   test('navigates to movie details when clicking featured movie', async ({ page }) => {
-    const recommendation = page.locator('.grid-cols-1 > a').first();
-    await recommendation.click();
+    const firstRecommendation = page.locator('.grid-cols-1 > motion.div').first();
+    await expect(firstRecommendation).toBeVisible();
+    
+    await firstRecommendation.click();
+    
     await expect(page.url()).toContain('/movies/');
   });
 
