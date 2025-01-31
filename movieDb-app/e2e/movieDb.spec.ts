@@ -40,12 +40,12 @@ test.describe('Home Page', () => {
 
     await expect(page.getByText('Featured Movies')).toBeVisible();
     
-    const recommendations = page.locator('.grid-cols-1 > motion.div');
+    const recommendations = page.locator('.grid-cols-1 > div');
     await expect(recommendations).toHaveCount(4);
   });
 
   test('navigates to movie details when clicking featured movie', async ({ page }) => {
-    const firstRecommendation = page.locator('.grid-cols-1 > motion.div').first();
+    const firstRecommendation = page.locator('.grid-cols-1 > div').first();
     await expect(firstRecommendation).toBeVisible();
     
     await firstRecommendation.click();
