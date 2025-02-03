@@ -1,10 +1,10 @@
 const Loader = () => {
 	return (
-		<div className="min-h-screen rounded-2xl bg-black/20 p-20 md:m-6 my-3">
-			<div className="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2">
+		<div className="my-3 min-h-screen rounded-2xl bg-black/20 p-20 md:m-6">
+			<div className="absolute top-2/4 left-1/2 -translate-x-1/2 -translate-y-1/2">
 				<svg
 					aria-hidden="true"
-					className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+					className="h-8 w-8 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"
 					viewBox="0 0 100 101"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"

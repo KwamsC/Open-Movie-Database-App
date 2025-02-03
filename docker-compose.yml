@@ -3,10 +3,5 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
+      target: base
     image: europe-west4-docker.pkg.dev/open-moviedb-app/open-movie-db/movie-db
-    ports:
-      - "8080:8080"
-    environment:
-      - NODE_ENV=production
-      - PORT=8080
-      - HOST=0.0.0.0

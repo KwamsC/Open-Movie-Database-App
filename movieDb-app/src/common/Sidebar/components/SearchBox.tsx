@@ -29,9 +29,9 @@ const SearchBox = ({
 	return (
 		<form
 			data-testid={`search-form-${testId}`}
-			className="space-y-4 bg-stone-800/50 p-4 rounded-xl"
+			className="space-y-4 rounded-xl bg-white p-4 dark:bg-stone-800/50"
 		>
-			<div className="flex justify-between items-center">
+			<div className="flex items-center justify-between">
 				<h3 className="text-l font-medium">Search</h3>
 				<button
 					type="button"
@@ -45,7 +45,7 @@ const SearchBox = ({
 			<div className="space-y-2">
 				<label
 					htmlFor="media-title"
-					className="block text-sm font-medium text-gray-300"
+					className="block text-sm font-medium text-stone-600 dark:text-gray-300"
 				>
 					Title
 				</label>
@@ -58,14 +58,14 @@ const SearchBox = ({
 					onChange={onChange}
 					onKeyDown={onKeyDown}
 					placeholder="Search..."
-					className="w-full px-4 py-2 min-h-[44px] rounded-xl bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					className="min-h-[44px] w-full rounded-xl bg-black/10 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:bg-black/20"
 				/>
 			</div>
 
 			<div className="space-y-2">
 				<label
 					htmlFor="release-year"
-					className="block text-sm font-medium text-gray-300"
+					className="block text-sm font-medium text-stone-600 dark:text-gray-300"
 				>
 					Release Year
 				</label>
@@ -79,14 +79,14 @@ const SearchBox = ({
 					placeholder="Year"
 					min="1900"
 					max={new Date().getFullYear()}
-					className="w-full px-4 py-2 min-h-[44px] rounded-xl bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					className="min-h-[44px] w-full rounded-xl bg-black/10 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:bg-black/20"
 				/>
 			</div>
 
 			<div className="space-y-2">
 				<label
 					htmlFor="media-type"
-					className="block text-sm font-medium text-gray-300"
+					className="block text-sm font-medium text-stone-600 dark:text-gray-300"
 				>
 					Movie | Series
 				</label>
@@ -96,7 +96,7 @@ const SearchBox = ({
 					name="type"
 					value={filters.type}
 					onChange={onChange}
-					className="w-full px-4 py-2 min-h-[44px] rounded-xl bg-black/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					className="min-h-[44px] w-full rounded-xl bg-black/10 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:bg-black/20"
 					aria-label="Select media type"
 				>
 					<option value="">Select Media</option>
@@ -113,7 +113,7 @@ const SearchBox = ({
 				data-testid={`search-submit-${testId}`}
 				onClick={onSearch}
 				disabled={isDisabled}
-				className={`w-full px-4 py-2 font-medium mt-3 bg-emerald-700 ${!isDisabled && "hover:bg-emerald-800"} disabled:opacity-50 text-white rounded-xl`}
+				className={`mt-3 w-full bg-emerald-700 px-4 py-2 shadow-md font-medium ${!isDisabled && "hover:bg-emerald-800"} rounded-xl text-white disabled:opacity-50`}
 			>
 				{isLoading ? "Searching..." : "Search"}
 			</button>

@@ -16,16 +16,18 @@ const FeaturedMovie = ({ movie, index }: FeaturedMoviesProps) => {
 		>
 			<NavLink
 				to={`/movies/${movie.imdbID}`}
-				className="block bg-black/40 rounded-lg min-h-60 shadow-md transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:bg-black/60 p-4"
+				className="block min-h-60 rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:bg-stone-200 hover:shadow-2xl dark:bg-black/40 dark:hover:bg-black/60"
 			>
 				<img
 					src={movie.Poster !== "N/A" ? movie.Poster : "/movie-placeholder.png"}
 					alt={movie.Title}
-					className="rounded-lg mb-4 w-full h-[300px] object-cover"
+					className="mb-4 h-[300px] w-full rounded-lg object-cover"
 					loading="lazy"
 				/>
-				<h4 className="text-sm font-bold line-clamp-1">{movie.Title}</h4>
-				<p className="text-xs text-gray-300">{movie.Year}</p>
+				<h4 className="line-clamp-1 text-sm font-bold">{movie.Title}</h4>
+				<p className="text-xs text-stone-700 dark:text-gray-300">
+					{movie.Year}
+				</p>
 			</NavLink>
 		</motion.div>
 	);
