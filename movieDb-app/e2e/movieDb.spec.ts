@@ -40,7 +40,7 @@ test.describe("Home Page", () => {
 
     await expect(page.getByText("Featured Movies")).toBeVisible();
 
-    const recommendations = page.locator(".grid-cols-1 > div");
+    const recommendations = page.locator(".grid-cols-2 > div");
     await expect(recommendations).toHaveCount(4);
   });
 
