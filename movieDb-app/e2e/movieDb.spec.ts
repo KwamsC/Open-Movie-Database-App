@@ -47,7 +47,7 @@ test.describe("Home Page", () => {
   test("navigates to movie details when clicking featured movie", async ({
     page,
   }) => {
-    const firstRecommendation = page.locator(".grid-cols-1 > div").first();
+    const firstRecommendation = page.locator(".grid-cols-2 > div").first();
     await expect(firstRecommendation).toBeVisible();
 
     await firstRecommendation.click();
