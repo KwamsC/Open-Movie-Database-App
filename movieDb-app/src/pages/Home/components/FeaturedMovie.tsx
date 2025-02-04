@@ -16,7 +16,7 @@ const FeaturedMovie = ({ movie, index }: FeaturedMoviesProps) => {
 		>
 			<NavLink
 				to={`/movies/${movie.imdbID}`}
-				className="block min-h-60 rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:bg-stone-200 hover:shadow-2xl dark:bg-black/40 dark:hover:bg-black/60"
+				className="block min-h-60 rounded-lg bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:bg-stone-200 hover:shadow-2xl dark:bg-stone-800/50 backdrop-blur-xl backdrop-filter dark:hover:bg-stone-800/60"
 			>
 				<img
 					src={movie.Poster !== "N/A" ? movie.Poster : "/movie-placeholder.png"}

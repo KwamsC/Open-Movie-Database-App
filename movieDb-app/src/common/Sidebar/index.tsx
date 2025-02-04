@@ -125,7 +125,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 			<motion.aside
 				initial={{ opacity: 0, x: -250 }}
 				animate={{ x: isOpen ? 0 : -250, opacity: isOpen ? 1 : 0 }}
-				className="fixed top-0 bottom-0 left-0 z-20 w-1/4 min-w-[250px] border-r border-white/10 bg-white/60 p-4 backdrop-blur-2xl md:hidden dark:bg-white/40"
+				className="fixed top-0 bottom-0 left-0 z-20 w-1/4 min-w-[250px] border-r border-white/10 bg-white/60 p-4 backdrop-blur-2xl md:hidden dark:bg-white/20"
 			>
 				<h2
 					data-testid="mobile-header"

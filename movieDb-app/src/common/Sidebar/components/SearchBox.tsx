@@ -44,13 +44,13 @@ const SearchBox = ({
 
 			<div className="space-y-2">
 				<label
-					htmlFor="media-title"
+					htmlFor={`search-title-${testId}`}
 					className="block text-sm font-medium text-stone-600 dark:text-gray-300"
 				>
 					Title
 				</label>
 				<input
-					id="media-title"
+					id={`search-title-${testId}`}
 					data-testid={`search-title-input-${testId}`}
 					type="text"
 					name="title"
@@ -64,13 +64,13 @@ const SearchBox = ({
 
 			<div className="space-y-2">
 				<label
-					htmlFor="release-year"
+					htmlFor={`search-year-${testId}`}
 					className="block text-sm font-medium text-stone-600 dark:text-gray-300"
 				>
 					Release Year
 				</label>
 				<input
-					id="release-year"
+					id={`search-year-${testId}`}
 					data-testid={`search-year-input-${testId}`}
 					type="number"
 					name="year"
@@ -85,14 +85,14 @@ const SearchBox = ({
 
 			<div className="space-y-2">
 				<label
-					htmlFor="media-type"
+					htmlFor={`search-media-${testId}`}
 					className="block text-sm font-medium text-stone-600 dark:text-gray-300"
 				>
 					Movie | Series
 				</label>
 				<select
-					id="media-type"
-					data-testid={`ssearch-type-select-${testId}`}
+					id={`search-media-${testId}`}
+					data-testid={`search-type-select-${testId}`}
 					name="type"
 					value={filters.type}
 					onChange={onChange}
