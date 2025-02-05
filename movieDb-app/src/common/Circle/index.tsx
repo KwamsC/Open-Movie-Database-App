@@ -4,14 +4,16 @@ interface CircleProps {
 	color?: string;
 	size?: string;
 	margin?: string;
+	animationDelay?: string;
 }
 
 const Circle = ({
 	id,
 	position,
-	color = "bg-stone-600",
-	size = "size-[70vh]",
-	margin = "-m-[20vh]",
+	color = "dark:bg-stone-500/30 bg-stone-400/25",
+	size = "size-[50vh] md:size-[75vh]",
+	margin = "-m-[15vh]",
+	animationDelay,
 }: CircleProps) => {
 	const positionClasses = {
 		"top-left": "top-0 left-0",
@@ -22,14 +24,12 @@ const Circle = ({
 		<div
 			id={id}
 			className={`
-        ${size}
-        ${margin} 
-        rounded-full 
-        fixed 
-        z-0 
-        ${color}
-        ${positionClasses[position]}
-      `}
+				${size}
+				${margin}
+				fixed z-0 rounded-full blur-md 
+				${color}
+				${positionClasses[position]}
+				animate-blob ${animationDelay}`}
 		/>
 	);
 };

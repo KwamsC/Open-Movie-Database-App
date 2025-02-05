@@ -81,11 +81,11 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 
 	return (
 		<>
-			<aside className="w-1/4 min-w-[250px] hidden md:block p-4">
+			<aside className="hidden w-1/4 min-w-[250px] p-4 md:block">
 				<NavLink to="/">
 					<h2
 						data-testid="desktop-header"
-						className="text-xl h-16 font-bold content-center mb-6"
+						className="mb-6 h-16 content-center text-xl font-bold"
 					>
 						MovieDB
 					</h2>
@@ -116,7 +116,7 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
 					transition={{ duration: 0.2 }}
-					className="fixed inset-0 bg-black/60 backdrop-blur-sm z-10 md:hidden"
+					className="fixed inset-0 z-10 bg-black/60 backdrop-blur-sm md:hidden"
 					onClick={() => setIsOpen(false)}
 				/>
 			)}
@@ -125,11 +125,11 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
 			<motion.aside
 				initial={{ opacity: 0, x: -250 }}
 				animate={{ x: isOpen ? 0 : -250, opacity: isOpen ? 1 : 0 }}
-				className="fixed top-0 left-0 bottom-0 w-1/4 min-w-[250px] md:hidden p-4 bg-stone-400/40 backdrop-blur-2xl border-r border-white/10 z-20"
+				className="fixed top-0 bottom-0 left-0 z-20 w-1/4 min-w-[250px] border-r border-white/10 bg-white/60 p-4 backdrop-blur-2xl md:hidden dark:bg-white/20"
 			>
 				<h2
 					data-testid="mobile-header"
-					className="text-xl font-bold m-3 mb-9 text-right"
+					className="m-3 mb-9 text-right text-xl font-bold"
 				>
 					MovieDB
 				</h2>

@@ -4,7 +4,7 @@
 A web application that allows users to search and explore movies using The Open Movie Database (OMDb) API. Users can search for movies and shows by title and year and view detailed information.
 
 ## ✨ Key Features
-- 🔍 **Search Movies & Shows**: Real-time search
+- 🔍 **Search Movies & Shows**: Search your favorite
 - 🎬 **Content Filtering**: Filter by year and media type (movies/shows)
 - 📱 **Responsive Design**: Seamless experience across all devices
 - ⚡️ **Performance**: Redis caching for fast responses
@@ -28,16 +28,16 @@ A web application that allows users to search and explore movies using The Open 
 
 ### Prerequisites
 - Node.js (v23.6.1)
-- Redis
+- Docker
 - OMDB API key
 
 
 ### Setup environment
-To run the application, create an `.env` file in the root directory, which can be created by running this script `npm run setup:env`. 
+If you have `nvm` installed, run the following command to get the right node version, otherwise install the node version 23.6.1
+
+Create an `.env` file in the root directory by running this script `npm run setup:env`. 
 
 Add your own `API_KEY`, which you can generate and obtain from the [The Open Movie Database](https://www.omdbapi.com/)
-
-If you have `nvm` installed, run the following command to get the right node version, otherwise install the node version 23.6.1
 
 ```bash
 nvm install
@@ -47,37 +47,18 @@ npm install
 
 # add env keys to environment
 npm run setup:env
-
-# Install frontend dependencies
-cd movieDb-app
-npm install
-```
-
-### Setup redis
-If you have `homebrew` installed, run the following command to
-
-```bash
-# Install Redis
-brew install redis
-
-# Start Redis service
-brew services start redis
-
-# Verify Redis is running
-brew services list | grep redis
 ```
 
 ## 🚀 Run application
-
-Build the frontend application and run the backend application to start the app
+With Docker, you can build the frontend application and run the backend application to start the app
 
 ```bash
-# Build frontend to load static files in backend (from movieDb-app)
+# Running the application in development mode
+npm run docker:serve
+
+# For any changes in the react app(/movieDb-app)
 cd movieDb-app
 npm run build
-
-# Start backend (from root)
-npm run dev
 ```
 
 ## 📚 API Documentation

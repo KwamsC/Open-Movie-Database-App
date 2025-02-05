@@ -17,15 +17,27 @@ function App() {
 	return (
 		<>
 			{/* Background Circles */}
-			<Circle id="circle1" position="top-left" color="bg-stone-600" />
-			<Circle id="circle2" position="bottom-right" color="bg-stone-500" />
+			<Circle id="circle1" position="top-left" />
+			<Circle
+				id="circle2"
+				position="bottom-right"
+				animationDelay="animation-delay-2000"
+			/>
+			{/* <div
+        id="circle1"
+        className="fixed top-0 left-0 z-0 -m-[15vh] size-[40vh] md:size-[75vh] animate-blob rounded-full blur-lg filter dark:bg-stone-500/30 bg-stone-400/25"
+      />
+      <div
+        id="circle2"
+        className="fixed right-0 bottom-0 z-0 -m-[15vh] size-[40vh] md:size-[75vh] animate-blob rounded-full blur-lg filter animation-delay-2000 dark:bg-stone-500/30 bg-stone-400/25"
+      /> */}
 
-			<div className="min-h-screen max-w-7xl z-20 md:m-10 self-center bg-white/10 backdrop-blur-2xl bg-clip-padding backdrop-filter border border-white/40 md:rounded-2xl text-white flex lg:mx-auto relative">
+			<div className="relative z-20 flex min-h-screen max-w-7xl self-center border border-white/40 bg-white/40 bg-clip-padding text-stone-800 backdrop-blur-xl backdrop-filter md:m-10 md:rounded-2xl lg:mx-auto dark:bg-white/10 dark:text-white">
 				{/* Sidebar */}
 				<Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 
 				{/* Main Content */}
-				<div className="flex-1 flex flex-col p-4">
+				<div className="flex flex-1 flex-col p-4">
 					{/* Navbar */}
 					<Navbar />
 					<SidebarToggleButton

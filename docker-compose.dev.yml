@@ -1,0 +1,31 @@
+services:
+  movie-db:
+    build: 
+      target: development
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/movieDb-app/node_modules
+    env_file: ./.env
+    environment:
+      - NODE_ENV=development
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+    networks:
+      - moviedb-network
+
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - moviedb-network
+
+networks:
+  moviedb-network:
+    name: moviedb-network
+    driver: bridge
