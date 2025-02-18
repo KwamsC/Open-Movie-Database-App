@@ -7,6 +7,7 @@
 }
 
 @theme {
+	--spacing-safe: env(safe-area-inset-bottom);
 	--animate-blob: blob 8s infinite;
 	@keyframes blob {
 		0% {

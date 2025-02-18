@@ -23,16 +23,8 @@ function App() {
 				position="bottom-right"
 				animationDelay="animation-delay-2000"
 			/>
-			{/* <div
-        id="circle1"
-        className="fixed top-0 left-0 z-0 -m-[15vh] size-[40vh] md:size-[75vh] animate-blob rounded-full blur-lg filter dark:bg-stone-500/30 bg-stone-400/25"
-      />
-      <div
-        id="circle2"
-        className="fixed right-0 bottom-0 z-0 -m-[15vh] size-[40vh] md:size-[75vh] animate-blob rounded-full blur-lg filter animation-delay-2000 dark:bg-stone-500/30 bg-stone-400/25"
-      /> */}
 
-			<div className="relative z-20 flex min-h-screen max-w-7xl self-center border border-white/40 bg-white/40 bg-clip-padding text-stone-800 backdrop-blur-xl backdrop-filter md:m-10 md:rounded-2xl lg:mx-auto dark:bg-white/10 dark:text-white">
+			<div className="relative z-20 p-safe flex min-h-screen max-w-7xl self-center border border-white/40 bg-white/40 bg-clip-padding text-stone-800 backdrop-blur-xl backdrop-filter md:m-10 md:rounded-2xl lg:mx-auto dark:bg-white/10 dark:text-white">
 				{/* Sidebar */}
 				<Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 

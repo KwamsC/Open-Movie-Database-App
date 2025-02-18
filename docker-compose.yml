@@ -3,5 +3,4 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-      target: base
     image: europe-west4-docker.pkg.dev/open-moviedb-app/open-movie-db/movie-db

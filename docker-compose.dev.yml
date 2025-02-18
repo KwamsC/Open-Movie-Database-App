@@ -5,7 +5,11 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./:/app
+      - ./movieDb-app/src:/app/movieDb-app/src
+      - ./movieDb-app/dist:/app/movieDb-app/dist
+      - ./movieDb-backend-src:/app/movieDb-backend-src
+      - ./package.json:/app/package.json
+      - ./.env:/app/.env
       - /app/node_modules
       - /app/movieDb-app/node_modules
     env_file: ./.env

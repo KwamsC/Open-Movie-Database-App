@@ -1,5 +1,48 @@
-.nvmrc
-.env.example
+# Version control
+.git
 .gitignore
-node_modules
+.nvmrc
+
+# Environment files
+.env*
+!.env.example
+
+# Development configs
+.vscode
+.idea
+*.log
 biome.json
+.editorconfig
+.prettierrc
+.eslintrc
+docker-compose*.yml
+Dockerfile*
+
+# Documentation
+*.md
+CHANGELOG*
+LICENSE*
+
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs
+dist
+build
+coverage
+.cache
+
+# Test files
+**/*.test.ts
+**/*.spec.ts
+**/test
+**/tests
+**/e2e
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Scripts
+scripts/

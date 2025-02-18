@@ -1,35 +1,18 @@
-import { useEffect, useState } from "react";
+import useTheme from '../hooks/useTheme'
 
 const ThemeToggle = () => {
-	const [isDark, setIsDark] = useState(() => {
-		const darkMode = localStorage.getItem("dark-mode");
-		if (darkMode === null) {
-			return window.matchMedia("(prefers-color-scheme: dark)").matches;
-		}
-		return darkMode === "true";
-	});
-
-	useEffect(() => {
-		const html = document.documentElement;
-		if (isDark) {
-			html.classList.add("dark");
-			localStorage.setItem("dark-mode", "true");
-		} else {
-			html.classList.remove("dark");
-			localStorage.setItem("dark-mode", "false");
-		}
-	}, [isDark]);
+	const { isDark, toggleTheme } = useTheme();
 
 	return (
 		<button
 			type="button"
-			onClick={() => setIsDark(!isDark)}
+			onClick={toggleTheme}
 			className="rounded-full p-3 transition-colors hover:bg-stone-200 dark:hover:bg-stone-600"
 			aria-label="Toggle theme"
 		>
 			{isDark ? (
 				<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-					<title>Light mode</title>
+					<title>Switch to Light mode</title>
 					<path
 						className="fill-stone-200"
 						d="M6.2 1C3.2 1.8 1 4.6 1 7.9 1 11.8 4.2 15 8.1 15c3.3 0 6-2.2 6.9-5.2C9.7 11.2 4.8 6.3 6.2 1Z"
@@ -41,7 +24,7 @@ const ThemeToggle = () => {
 				</svg>
 			) : (
 				<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-					<title>Dark mode</title>
+					<title>Switch to Dark mode</title>
 					<path
 						className="fill-stone-500"
 						d="M7 0h2v2H7zM12.88 1.637l1.414 1.415-1.415 1.413-1.413-1.414zM14 7h2v2h-2zM12.95 14.433l-1.414-1.413 1.413-1.415 1.415 1.414zM7 14h2v2H7zM2.98 14.364l-1.413-1.415 1.414-1.414 1.414 1.415zM0 7h2v2H0zM3.05 1.706 4.463 3.12 3.05 4.535 1.636 3.12z"

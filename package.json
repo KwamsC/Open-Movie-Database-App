@@ -13,6 +13,8 @@
     "dev": "node --watch --env-file .env movieDb-backend-src/index.ts",
     "test:backend": "NODE_ENV=test node --test movieDb-backend-src/tests/**/*.test.ts",
     "docker:serve": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build",
+    "docker:build": "docker compose -f docker-compose.yml -f docker-compose.prod.yml build",
+    "docker:prod": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up",
     "lint": "biome lint --write movieDb-backend-src",
     "format": "biome format --write movieDb-backend-src",
     "check": "biome check --write movieDb-backend-src "
