@@ -5,7 +5,7 @@
   "main": "movieDb-backend-src/index.ts",
   "type": "module",
   "engines": {
-    "node": "23.6.1"
+    "node": "23.10.0"
   },
   "scripts": {
     "start": "node movieDb-backend-src/index.ts",

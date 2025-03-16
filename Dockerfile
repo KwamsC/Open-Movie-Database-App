@@ -1,5 +1,5 @@
 # Base stage
-FROM node:23.6.1-alpine3.21 as base
+FROM node:23.10.0-alpine3.21 as base
 WORKDIR /app
 COPY package*.json ./
 COPY movieDb-backend-src ./movieDb-backend-src
